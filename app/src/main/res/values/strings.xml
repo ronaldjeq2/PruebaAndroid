@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="logo">logo</string>
+    <string name="email">Correo</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Ingresar sesión</string>
+    <string name="welcome">¡Bienvenido!</string>
+</resources>
