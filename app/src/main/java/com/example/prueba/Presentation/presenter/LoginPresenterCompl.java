@@ -2,6 +2,7 @@ package com.example.prueba.Presentation.presenter;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.prueba.Data.LoginResponse;
@@ -21,31 +22,31 @@ public class LoginPresenterCompl implements ILoginPresenter, Callback<LoginRespo
 
     public LoginPresenterCompl(LoginView loginView) {
         this.loginView = loginView;
-
         handler = new Handler(Looper.getMainLooper());
     }
 
 
 
     public void login(String name, String passwd) {
-       Call<LoginResponse> call = MyApiAdapter.getApiService().postLogin(name, passwd);
-       call.enqueue(this);
+        loginView.onSetProgressBarVisibility(View.VISIBLE);
+        Call<LoginResponse> call = MyApiAdapter.getApiService().postLogin(name, passwd);
+        call.enqueue(this);
     }
 
-    @Override
-    public void setProgressBarVisiblity(int visiblity) {
-        loginView.onSetProgressBarVisibility(visiblity);
-    }
 
     @Override
     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+        loginView.onSetProgressBarVisibility(View.INVISIBLE);
         if (response.isSuccessful()){
             loginView.onLoginResult(login.getSuccess(), login.getMessage());
+        }else{
+            loginView.onLoginResult(true, "error resposne");
         }
     }
 
     @Override
     public void onFailure(Call<LoginResponse> call, Throwable t) {
+        loginView.onSetProgressBarVisibility(View.INVISIBLE);
         loginView.onLoginResult(true, "error");
     }
 }

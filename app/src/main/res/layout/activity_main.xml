@@ -30,6 +30,7 @@
         android:layout_width="231dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="74dp"
+        app:boxStrokeColor="#FFFFFF"
         app:helperText="@string/email"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -40,11 +41,13 @@
             android:id="@+id/editTextTextEmailAddress"
             android:layout_width="231dp"
             android:layout_height="wrap_content"
-            app:helperText="@string/email"
-            android:background="@color/white"
-            android:textColor="@color/black"
+            android:background="@drawable/edit_text_shape"
+            android:importantForAutofill="no"
             android:inputType="textEmailAddress"
-            android:importantForAutofill="no" />
+            android:textColor="@color/black"
+            android:paddingHorizontal="5dp"
+            android:textSize="10dp"
+            app:helperText="@string/email" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -56,16 +59,19 @@
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        app:boxStrokeColor="@color/black"
         tools:ignore="MissingConstraints">
 
         <EditText
             android:id="@+id/editTextNumberPassword"
             android:layout_width="231dp"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:textColor="@color/black"
+            android:background="@drawable/edit_text_shape"
+            android:importantForAutofill="no"
+            android:paddingHorizontal="5dp"
+            android:textSize="10dp"
             android:inputType="textPassword"
-            android:importantForAutofill="no" />
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -92,6 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="68dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
         app:layout_constraintHorizontal_bias="0.519"
